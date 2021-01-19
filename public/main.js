@@ -29,3 +29,36 @@ function displayNotificationBetter() {
   }
 }
 
+var loadFile = function(event) {
+  console.log('load file')
+  var image = document.getElementById('output');
+  console.log(event);
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+
+function getLocation() {
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    console.log("Geo Location not supported by browser");
+  }
+}
+//function that retrieves the position
+function showPosition(position) {
+  var longitude = position.coords.longitude;
+  var latitude = position.coords.latitude;
+
+  var map = new ol.Map({
+    target: 'map',
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      })
+    ],
+    view: new ol.View({
+      center: ol.proj.fromLonLat([longitude, latitude]),
+      zoom: 16
+    })
+  });
+}
+

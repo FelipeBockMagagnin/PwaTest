@@ -18,3 +18,14 @@ body {
   border-radius: 10px;
   margin: 4px;
 }
+
+fieldset{
+  width: 70vw;
+  margin: 10px;
+  text-align: center;
+}
+
+.map {
+  height: 200px;
+  width: 100%;
+}
